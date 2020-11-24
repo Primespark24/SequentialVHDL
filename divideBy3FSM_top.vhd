@@ -21,7 +21,7 @@ architecture divideby3FSM_top of divideby3FSM_top is
   component divideBy3FSM_50 is
     port ( clk :   in  STD_LOGIC;
            reset : in  STD_LOGIC;
-           y :    out  STD_LOGIC);
+           yy :    out  STD_LOGIC);
   end component;
 
   signal clk : STD_LOGIC := '0';
@@ -34,8 +34,8 @@ begin
   process ( CLK100MHZ ) 
 		variable q: STD_LOGIC_VECTOR(25 downto 0);
 	begin
-      if rising_edge(CLK100MHZ) then 
-        q := q + 1;
+      if rising_edge(CLK100MHZ) then --every 25 100mhz cycles, clk goes high
+        q := q + 1;                   --adds 1 to the binary value of q '000' -> '001' -> '010' etc
 			  clk <= q(25);
       end if;
    end process;	
@@ -47,7 +47,7 @@ begin
 dvd : divideBy3FSM_50 port map( 
   clk => clk,
   reset => btnC,
-  y => LED(0) -- drive LED 0 from slow clock divided by 3
+  yy => LED(0) -- drive LED 0 from slow clock divided by 3
 );
 
 -- Drive board's LED 1 from slow clock

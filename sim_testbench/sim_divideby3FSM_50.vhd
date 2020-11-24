@@ -14,7 +14,7 @@ architecture Behavioral of sim_divideby3FSM_50 is
 component divideBy3FSM_50 is
     port ( clk :   in  STD_LOGIC;
            reset : in  STD_LOGIC;
-           y :    out  STD_LOGIC);
+           yy :    out  STD_LOGIC);
 end component;
 
 -- define signal wires to drive the inputs of our divideby3FSM_50 module
@@ -38,7 +38,7 @@ begin
     sim_unit : divideBy3FSM_50 port map( 
         clk => clk,
         reset => reset,
-        y => y
+        yy => y
     );
 
     process begin
@@ -48,7 +48,7 @@ begin
         reset <= '1';
         wait for 20 ns;
         reset <= '0';
-        wait for 80 ns;
+        wait for 180 ns;
     end process;
 
 
