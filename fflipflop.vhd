@@ -13,7 +13,9 @@ end fflipflop;
 architecture fflipflop of fflipflop is
 begin
     process (clk, reset, d) begin       --makes a process using those parts
-    if reset <= '1' then y <= '0'; noty <= '1';        --if there was  a reset, y should be 1
+    -- ERROR: if reset <= '1' then y <= '0'; noty <= '1';        --if there was  a reset, y should be 1
+    -- You were checking if reset was less than or equal to 1 
+    if reset = '1' then y <= '0'; noty <= '1';        --if there was  a reset, y should be 1
     elsif rising_edge(clk) then y <= d; noty <= not d; --if there wasn't a reset and the clk went high, then make y to d
     end if;
 end process;
